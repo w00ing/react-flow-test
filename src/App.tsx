@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import {
   Background,
   Controls,
@@ -7,7 +7,7 @@ import {
   addEdge,
   useNodesState,
   useEdgesState,
-  type OnConnect,
+  OnConnect,
 } from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
@@ -25,8 +25,8 @@ export default function App() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect: OnConnect = useCallback(
-    (connection) => setEdges((edges) => addEdge(connection, edges)),
-    [setEdges]
+    connection => setEdges(edges => addEdge(connection, edges)),
+    [setEdges],
   );
 
   console.log({ initialNodes });
